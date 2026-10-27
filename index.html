@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="აღმოაჩინე ავტომობილები, შეადარე მოდელები და შეამოწმე შენი ცოდნა AutoZone Georgia-ზე.">
+  <title>AutoZone Georgia | შენი ავტომობილების სამყარო</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a href="#home" class="logo"><span>AZ</span> AutoZone</a>
+
+    <nav>
+      <a href="#home">მთავარი</a>
+      <a href="#catalog">ავტომობილები</a>
+      <a href="#quizzes">ტესტები</a>
+      <a href="#about">ჩვენ შესახებ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="logoutButton" class="nav-button secondary-button" type="button">გამოსვლა</button>
+      <a href="#catalog" class="nav-button">აღმოაჩინე <span>↗</span></a>
+    </div>
+  </header>
+
+  <div id="authModal" class="auth-modal" hidden>
+    <div class="auth-card">
+      <div class="eyebrow">ACCESS REQUIRED</div>
+      <h2>რეგისტრაცია აუცილებელია</h2>
+      <p>სანამ არ დარეგისტრირდებით, ვერ გამოიყენებთ კატალოგს, ტესტებს და ფავორიტებს.</p>
+      <form id="registerForm" class="auth-form">
+        <input name="name" type="text" placeholder="თქვენი სახელი" maxlength="80" required>
+        <input name="email" type="email" placeholder="ელ.ფოსტა" required>
+        <input name="password" type="password" placeholder="პაროლი (6+ სიმბოლო)" minlength="6" maxlength="64" required>
+        <button class="primary-button" type="submit">რეგისტრაცია</button>
+      </form>
+      <p id="authMessage" class="auth-message" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="live-dot"></span> შენი ავტომობილების სამყარო</div>
+        <h1>იპოვე შენი,<br>სასურველი<span>მანქანა.</span></h1>
+        <p>ეკონომიურობიდან სუპერქარებამდე — აღმოაჩინე შენი სტილი, შეისწავლე ავტომობილები და გამოსცადე შენი ცოდნა.</p>
+
+        <div class="hero-actions">
+          <a href="#catalog" class="primary-button">მანქანების ნახვა ↗</a>
+          <a href="#quizzes" class="secondary-button">გაიარე ტესტი</a>
+        </div>
+
+        <div class="hero-stats">
+          <div><strong>05</strong><span>კატეგორია</span></div>
+          <div><strong>04</strong><span>ავტოტესტი</span></div>
+          <div><strong>∞</strong><span>აღმოჩენა</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <img
+          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85"
+          alt="სპორტული ავტომობილი"
+          class="hero-car"
+        >
+        <div class="floating-card">
+          <span class="floating-icon">✦</span>
+          <div><strong>იპოვე შენი სტილი</strong><small>შენი შემდეგი ავტომობილი აქ იწყება</small></div>
+        </div>
+        <div class="hero-number">AUTO / 001</div>
+      </div>
+    </section>
+
+    <section class="category-section section" id="categories">
+      <div class="section-heading">
+        <div><div class="eyebrow">EXPLORE YOUR DRIVE</div><h2>აირჩიე შენი <span>მიმართულება.</span></h2></div>
+        <p>ხუთი განსხვავებული სამყარო.<br>ერთი საერთო სიყვარული — ავტომობილები.</p>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-card" data-category="economy">
+          <span class="category-number">01 / DAILY</span>
+          <span class="category-emoji">♻</span>
+          <strong>ეკონომიური</strong>
+          <span>ნაკლები ხარჯი, მეტი გზა ↗</span>
+        </button>
+        <button class="category-card" data-category="luxury">
+          <span class="category-number">02 / LUXURY</span>
+          <span class="category-emoji">✧</span>
+          <strong>პრემიუმ კლასი</strong>
+          <span>კომფორტი და ელეგანტურობა ↗</span>
+        </button>
+        <button class="category-card" data-category="suv">
+          <span class="category-number">03 / ADVENTURE</span>
+          <span class="category-emoji">⌁</span>
+          <strong>SUV & 4×4</strong>
+          <span>ახალი გზების აღმოჩენა ↗</span>
+        </button>
+        <button class="category-card" data-category="sport">
+          <span class="category-number">04 / PERFORMANCE</span>
+          <span class="category-emoji">⚡</span>
+          <strong>სპორტული</strong>
+          <span>ადრენალინი და სისწრაფე ↗</span>
+        </button>
+        <button class="category-card" data-category="electric">
+          <span class="category-number">05 / FUTURE</span>
+          <span class="category-emoji">ϟ</span>
+          <strong>ელექტრო</strong>
+          <span>მომავლის ტექნოლოგია ↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="catalog-section section" id="catalog">
+      <div class="section-heading">
+        <div><div class="eyebrow">THE COLLECTION</div><h2>შენი შემდეგი <span>მანქანა.</span></h2></div>
+        <p>შეისწავლე მოდელები, გაფილტრე<br>კატეგორიით და შეინახე ფავორიტები.</p>
+      </div>
+
+      <div class="catalog-toolbar">
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="მოძებნე ბრენდი ან მოდელი..." aria-label="მანქანის ძიება">
+        </div>
+        <select id="typeFilter" aria-label="კატეგორიის არჩევა">
+          <option value="all">ყველა კატეგორია</option>
+          <option value="economy">ეკონომიური</option>
+          <option value="luxury">პრემიუმ კლასი</option>
+          <option value="suv">SUV & 4×4</option>
+          <option value="sport">სპორტული</option>
+          <option value="electric">ელექტრო</option>
+        </select>
+        <button id="favoritesToggle" class="secondary-button">♡ ფავორიტები</button>
+      </div>
+
+      <div id="carGrid" class="car-grid">
+        <p class="loading-message">ავტომობილები იტვირთება...</p>
+      </div>
+      <p id="catalogMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="quiz-section section" id="quizzes">
+      <div class="section-heading">
+        <div><div class="eyebrow">TEST YOUR KNOWLEDGE</div><h2>რამდენად კარგად <span>იცნობ მანქანებს?</span></h2></div>
+        <p>ოთხი ტესტი დამწყებთათვის და<br>ნამდვილი ავტომოყვარულებისთვის.</p>
+      </div>
+
+      <div class="quiz-grid">
+        <article class="quiz-card">
+          <span class="quiz-icon">◈</span><span class="quiz-tag">LEVEL 01</span>
+          <h3>ავტომობილების საფუძვლები</h3>
+          <p>ძრავა, საწვავი და ავტომობილის ძირითადი ნაწილები.</p>
+          <button class="primary-button start-quiz" data-quiz="basics">დაწყება ↗</button>
+        </article>
+        <article class="quiz-card">
+          <span class="quiz-icon">✳</span><span class="quiz-tag">LEVEL 02</span>
+          <h3>ბრენდები და მოდელები</h3>
+          <p>შეამოწმე, რამდენად ცნობ მანქანების ბრენდებს.</p>
+          <button class="primary-button start-quiz" data-quiz="brands">დაწყება ↗</button>
+        </article>
+        <article class="quiz-card">
+          <span class="quiz-icon">⌁</span><span class="quiz-tag">LEVEL 03</span>
+          <h3>უსაფრთხო მართვა</h3>
+          <p>საგზაო უსაფრთხოების ძირითადი წესები.</p>
+          <button class="primary-button start-quiz" data-quiz="traffic">დაწყება ↗</button>
+        </article>
+        <article class="quiz-card">
+          <span class="quiz-icon">ϟ</span><span class="quiz-tag">LEVEL 04</span>
+          <h3>ნამდვილი ექსპერტი</h3>
+          <p>ტექნიკური ცოდნა, ძრავები და ავტომობილის მუშაობა.</p>
+          <button class="primary-button start-quiz" data-quiz="expert">დაწყება ↗</button>
+        </article>
+      </div>
+
+      <div id="quizPanel" class="quiz-panel" hidden>
+        <div class="quiz-topline">
+          <span id="quizLabel" class="eyebrow">AUTO QUIZ</span>
+          <button id="closeQuiz" class="icon-button" aria-label="ტესტის დახურვა">✕</button>
+        </div>
+        <div class="progress-track"><div id="quizProgress" class="progress-fill"></div></div>
+        <p id="questionCounter" class="question-counter"></p>
+        <h3 id="questionText"></h3>
+        <div id="answerOptions" class="answer-options"></div>
+        <p id="answerFeedback" aria-live="polite"></p>
+        <button id="nextQuestion" class="primary-button" hidden>შემდეგი კითხვა →</button>
+        <div id="quizResult" hidden></div>
+      </div>
+    </section>
+
+    <section class="profile-section section" id="profile">
+      <div class="profile-card">
+        <div class="profile-copy">
+          <div class="eyebrow">YOUR GARAGE</div>
+          <h2>შენი ავტოფარეხი.<br><span>შენი არჩევანი.</span></h2>
+          <p>შეიყვანე სახელი, შეინახე ფავორიტი ავტომობილები და დაათვალიერე შენი ტესტების შედეგები.</p>
+        </div>
+        <form id="profileForm" class="profile-form">
+          <label for="visitorName">შენი სახელი</label>
+          <input id="visitorName" name="name" maxlength="80" placeholder="მაგ. გიორგი" required>
+          <button class="primary-button" type="submit">პროფილის შენახვა ↗</button>
+          <p id="profileMessage" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="history-card">
+        <h3>ტესტების ისტორია</h3>
+        <div id="quizHistory"><p>ჯერ ტესტის შედეგები არ გაქვს.</p></div>
+      </div>
+    </section>
+
+    <section class="about-section section" id="about">
+      <div class="eyebrow">ABOUT AUTOZONE</div>
+      <h2>მეტი ვიდრე მანქანები.<br><span>ეს შენი სამყაროა.</span></h2>
+      <p>AutoZone Georgia არის ავტომობილების მოყვარულებისთვის შექმნილი სივრცე, სადაც შეგიძლია აღმოაჩინო სხვადასხვა ტიპის მანქანები, შეისწავლო მათი მახასიათებლები და შეამოწმო შენი ცოდნა.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#home" class="logo"><span>AZ</span> AutoZone</a>
+    <p>შექმნილია ავტომობილების მოყვარულებისთვის © <span id="currentYear"></span></p>
+    <a href="#home">ზემოთ ↑</a>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
